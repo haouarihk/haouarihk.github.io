@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { roundArray, roundMatrix, roundNum, Show1DMatrix, Show2DMatrix } from "../../../components/util"
-import seidelMethodIterations, { seidelMethodPrecision, verifySolvable } from "./script"
+import { seidelMethodIterations, seidelMethodPrecision, verifySolvable } from "./script"
 
 
 function Jacob() {

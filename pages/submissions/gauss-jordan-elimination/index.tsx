@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { roundArray, roundMatrix, roundNum, Show1DMatrix, Show2DMatrix } from "../../../components/util"
-import gaussianJordanElimination from "./script"
+import { gaussianJordanElimination } from "./script"
 
 async function solveForXs(A: number[][], B: number[]) {
     const Xs: number[] = []

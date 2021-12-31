@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { roundArray, roundMatrix, roundNum, Show1DMatrix, Show2DMatrix } from "../../../components/util"
-import jacobMethodIterations, { jacobMethodPrecision, verifySolvable } from "./script"
+import { jacobMethodIterations, jacobMethodPrecision, verifySolvable } from "./script"
 
 
 function Jacob() {
