@@ -4,7 +4,7 @@ import config from "../config"
 
 const Projects: NextPage = () => (
     <main>
-        <List projects={config.projects} selected={0}/>
+        <List projects={config.projects} />
     </main>
 
 )
