@@ -14,7 +14,7 @@ const projects: Project[] = [
             {
                 name: "github",
                 icon: "/icon/github-light.png",
-                link: "https://github.com/haouarihk/goImgTemplator"
+                link: "https://github.com/haouarihk/haouarihk.github.io/tree/master/pages/submissions/gauss-jordan-elimination"
             }
         ]
     },
@@ -27,7 +27,7 @@ const projects: Project[] = [
             {
                 name: "github",
                 icon: "/icon/github-light.png",
-                link: "https://github.com/haouarihk/goImgTemplator"
+                link: "https://github.com/haouarihk/haouarihk.github.io/tree/master/pages/submissions/jacobi-method"
             }
         ]
     },
@@ -40,7 +40,33 @@ const projects: Project[] = [
             {
                 name: "github",
                 icon: "/icon/github-light.png",
-                link: "https://github.com/haouarihk/goImgTemplator"
+                link: "https://github.com/haouarihk/haouarihk.github.io/tree/master/pages/submissions/gauss-sheildi-method"
+            }
+        ]
+    },
+    {
+        name: "",
+        description: "calculate area of a circle without using pi",
+        tryItLink: "/submissions/calculate-area-of-circle-without-pi",
+        banner: "/img/gauss-jordan-elimination.jpg",
+        links: [
+            {
+                name: "github",
+                icon: "/icon/github-light.png",
+                link: "https://github.com/haouarihk/haouarihk.github.io/tree/master/pages/submissions/calculate-area-of-circle-without-pi"
+            }
+        ]
+    },
+    {
+        name: "Leibnix Series",
+        description: "calculate Pi using Leibniz series method",
+        tryItLink: "/submissions/leibniz-series",
+        banner: "/img/gauss-jordan-elimination.jpg",
+        links: [
+            {
+                name: "github",
+                icon: "/icon/github-light.png",
+                link: "https://github.com/haouarihk/haouarihk.github.io/tree/master/pages/submissions/leibniz-series"
             }
         ]
     },
