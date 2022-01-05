@@ -37,8 +37,9 @@ export async function jacobMethodPrecision(_A: number[][], _B: number[], precisi
             // solving for the x
             x[i] = (B[i] - alpha) / A[i][i];
             // cb(x, _);
-            allResults.push(x.slice());
         }
+
+        allResults.push(x.slice());
 
         // check the amount of difference between the current and previous x
         const diff = x.reduce((acc, curr, i) => {
@@ -79,8 +80,9 @@ export async function jacobMethodIterations(_A: number[][], _B: number[], Iterat
             // solving for the x
             x[i] = (B[i] - alpha) / A[i][i];
             // cb(x, _);
-            allResults.push(x.slice());
         }
+
+        allResults.push(x.slice());
     }
 
     return { x, allResults };
