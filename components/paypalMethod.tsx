@@ -11,7 +11,6 @@ const createOrder = (amount: number) => (data: any, actions: any) => {
             purchase_units: [
                 {
                     amount: {
-                        // charge users $499 per order
                         value: amount,
                     },
                 },
