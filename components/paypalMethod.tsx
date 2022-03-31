@@ -3,6 +3,7 @@
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useState } from "react";
 import config from "../config";
+import copyToClipBoard from "./util";
 
 // creates a paypal order
 const createOrder = (amount: number) => (data: any, actions: any) => {
@@ -55,12 +56,6 @@ const pays = [
     "20$",
     "30$🤑"
 ]
-
-
-function copyToClipBoard(e: any) {
-    /* Copy the text inside the text field */
-    navigator.clipboard.writeText(e.target.innerText);
-}
 
 
 

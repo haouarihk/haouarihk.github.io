@@ -56,3 +56,11 @@ export function Show1DMatrix({ label, matrix, className }: { label: string, matr
         </div>
     </div>
 }
+
+
+
+
+export default function copyToClipBoard(e: any) {
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(e.target.innerText);
+}
