@@ -6,15 +6,20 @@ import { useState } from "react";
 import config from "../config";
 // import Image from "next/image"
 
+
+
+const selected =
+  "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium";
+const notSelected =
+  "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
+
+
+
 const NavBar = () => {
   const router = useRouter();
   const [opened, setOpened] = useState(false);
 
   const toggleOpened = () => setOpened(!opened);
-  const selected =
-    "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium";
-  const notSelected =
-    "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
 
   const btns = (
     <>

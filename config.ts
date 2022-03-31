@@ -1,4 +1,9 @@
 
+export interface Contact{
+    value:string;
+    url?:string;
+}
+
 export interface Link {
     name: string
     icon: string
@@ -27,6 +32,9 @@ export interface Config {
     bio: string;
     projects: Project[];
     socialMedia: Social[];
+
+    // it can be just the value oooor with some cool stuff
+    contacts: {[name:string]:Contact|string};
 }
 
 
@@ -71,7 +79,12 @@ const config: Config = {
             name: "LinkedIn",
             value: "https://www.linkedin.com/in/haithem-haouari-09392b58"
         }
-    ]
+    ],
+
+    contacts:{
+        email: "haouarihk@gmail.com"
+    }
+
 }
 
 export default config

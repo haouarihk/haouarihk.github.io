@@ -38,3 +38,6 @@ yarn-error.log*
 
 # history
 .history
+
+# env file
+.env

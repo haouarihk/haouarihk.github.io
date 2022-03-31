@@ -5,10 +5,8 @@ const ContactMe: NextPage = () => (
     <main>
         <h1>Contact Me</h1>
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatum, quisquam.
+            email:haouarihk@gmail.com
         </p>
-        
     </main>
 
 )
