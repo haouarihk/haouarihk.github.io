@@ -42,9 +42,12 @@ const NavBar = () => {
       >
         <Link href="/contact-me">Contact Me</Link>
       </div>
+
       <div className={router.pathname == "/paypal-me" ? selected : notSelected}>
         <Link href="/paypal-me">Paypal Me</Link>
       </div>
+
+
     </>
   );
 

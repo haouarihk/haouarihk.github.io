@@ -35,6 +35,7 @@ export interface Config {
 
     // it can be just the value oooor with some cool stuff
     contacts: {[name:string]:Contact|string};
+    paypalMe:string;
 }
 
 
@@ -83,8 +84,8 @@ const config: Config = {
 
     contacts:{
         email: "haouarihk@gmail.com"
-    }
-
+    },
+    paypalMe:"haouarihk@gmail.com"
 }
 
 export default config
