@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const aprilFools = {
   month: 3,
@@ -14,10 +15,11 @@ function isItAprilFoolDay() {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (isItAprilFoolDay()) {
-      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      router.push("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
     }
   }, []);
 
