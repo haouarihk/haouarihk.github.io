@@ -12,6 +12,7 @@ function isItAprilFoolDay() {
   const now = new Date();
   return now.getMonth() == aprilFools.month && now.getDate() == aprilFools.date;
 }
+
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -19,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     }
   }, []);
+
   return <Layout> <Component {...pageProps} /> </Layout>
 }
 
