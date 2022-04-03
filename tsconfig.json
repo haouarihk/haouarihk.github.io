@@ -18,9 +18,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": [
-      "./d/global"
-    ]
   },
   "include": [
     "next-env.d.ts",

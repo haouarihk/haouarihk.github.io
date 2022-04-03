@@ -107,7 +107,6 @@ const NavBar = () => {
             </div>
           </div>
 
-
           <motion.div
             variants={OpenedVariants}
             animate={opened ? "opened" : "closed"}
