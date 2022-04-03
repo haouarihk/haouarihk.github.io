@@ -74,29 +74,29 @@ function Jacob() {
 
 
     return <div className="md:p-20 lg:p-52">
-        <div className="p-3 rounded-lg bg-gray-800">
-            <h1 className="text-2xl px-2 md:m-5">Jacob Method</h1>
+        <div className="p-3 bg-gray-800 rounded-lg">
+            <h1 className="px-2 text-2xl md:m-5">Jacob Method</h1>
             the Jacobi method is an iterative algorithm for determining the solutions of a strictly diagonally dominant system of linear equations. Each diagonal element is solved for, and an approximate value is plugged in. The process is then iterated until it converges. This algorithm is a stripped-down version of the Jacobi transformation method of matrix diagonalization. The method is named after Carl Gustav Jacob Jacobi.
-            <h1 className="text-2xl px-2 m-5">A*X=B</h1>
+            <h1 className="px-2 m-5 text-2xl">A*X=B</h1>
         </div>
 
         <form className="flex flex-col justify-center items-center">
-            <div className="w-full p-5 border-b-2 ">
+            <div className="p-5 w-full border-b-2 ">
                 <Show2DMatrix label="A=" matrix={A} className="p-3" />
-                <textarea onChange={test(setA, setErrA)} className="appearance-none block w-full h-96 bg-gray-600 text-gray-300 border border-gray-600 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-gray-500" id="grid-first-name" rows={3} defaultValue={JSON.stringify(A, null, 4)} />
+                <textarea onChange={test(setA, setErrA)} className="block py-3 px-4 mb-3 w-full h-96 leading-tight text-gray-300 bg-gray-600 focus:bg-gray-700 rounded border border-gray-600 focus:border-gray-500 focus:outline-none appearance-none" id="grid-first-name" rows={3} defaultValue={JSON.stringify(A, null, 4)} />
                 {errA && <h4 className="text-white bg-red-600 rounded-lg">{errA}</h4>}
             </div>
-            <div className="w-full p-5">
+            <div className="p-5 w-full">
                 <Show1DMatrix label="B=" matrix={B} className="p-3" />
-                <textarea onChange={test(setB, setErrB)} className="appearance-none block w-full h-40 bg-gray-600 text-gray-300 border border-gray-600 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-gray-500" id="grid-first-name" rows={3} defaultValue={JSON.stringify(B, null, 4)} />
+                <textarea onChange={test(setB, setErrB)} className="block py-3 px-4 mb-3 w-full h-40 leading-tight text-gray-300 bg-gray-600 focus:bg-gray-700 rounded border border-gray-600 focus:border-gray-500 focus:outline-none appearance-none" id="grid-first-name" rows={3} defaultValue={JSON.stringify(B, null, 4)} />
                 {errB && <h4 className="text-white bg-red-600 rounded-lg">{errB}</h4>}
             </div>
 
             {/* submit button */}
-            <div className="w-full p-5 px-3">
+            <div className="p-5 px-3 w-full">
 
-                <div className="w-full p-5 ">
-                    <label className="text-xl px-2 m-5">type</label>
+                <div className="p-5 w-full ">
+                    <label className="px-2 m-5 text-xl">type</label>
                     {/* @ts-ignore */}
                     <div defaultValue={workType} className="p-5 " onChange={(e) => { setWorkType(e.target.value); setIterationsOrPrecision(e.target.value === "Iterations" ? 100 : 0.001) }}>
                         <input type="radio" value="Iterations" name="type" defaultChecked /> With Iterations <br />
@@ -105,21 +105,21 @@ function Jacob() {
                 </div>
 
                 {
-                    workType == "Iterations" ? <div className="w-full p-5 ">
-                        <label className="text-xl px-2 m-5">Iterations</label>
-                        <input type="number" value={IterationsOrPrecision} onChange={(e) => setIterationsOrPrecision(parseInt(e.currentTarget.value))} className="p-2 rounded-lg bg-gray-800" />
+                    workType == "Iterations" ? <div className="p-5 w-full ">
+                        <label className="px-2 m-5 text-xl">Iterations</label>
+                        <input type="number" value={IterationsOrPrecision} onChange={(e) => setIterationsOrPrecision(parseInt(e.currentTarget.value))} className="p-2 bg-gray-800 rounded-lg" />
                     </div>
                         :
-                        <div className="w-full p-5 ">
-                            <label className="text-xl px-2 m-5">Precision</label>
-                            <input type="number" value={IterationsOrPrecision} onChange={(e) => setIterationsOrPrecision(parseFloat(e.currentTarget.value))} className="p-2 rounded-lg bg-gray-800" />
+                        <div className="p-5 w-full ">
+                            <label className="px-2 m-5 text-xl">Precision</label>
+                            <input type="number" value={IterationsOrPrecision} onChange={(e) => setIterationsOrPrecision(parseFloat(e.currentTarget.value))} className="p-2 bg-gray-800 rounded-lg" />
                         </div>
                 }
 
-                <button onClick={solve} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <button onClick={solve} className="py-2 px-4 font-bold text-white bg-blue-500 hover:bg-blue-700 rounded focus:outline-2 focus:outline-none">
                     Solve
                 </button>
-                {errG && <h4 className="text-white bg-red-600 rounded-lg my-2">{errG}</h4>}
+                {errG && <h4 className="my-2 text-white bg-red-600 rounded-lg">{errG}</h4>}
             </div>
         </form>
 
@@ -146,7 +146,7 @@ function Jacob() {
                 {/* old results */}
                 < div className="p-2">
                     <h1 className="mb-3 border-b-2">Previews results:</h1>
-                    <div className="flex justify-center flex-wrap ">
+                    <div className="flex flex-wrap justify-center ">
                         {
                             oldResults.map((e, i) =>
                                 <Show1DMatrix key={i} label={"X_" + i + "="} matrix={e} className="p-3" />

@@ -16,16 +16,21 @@ function isItAprilFoolDay() {
 }
 
 function gotRickRolledBefore() {
-  if (!localStorage.getItem("gotRicked")) {
-    return
+  if (localStorage.getItem("gotRicked")) {
+    return true
   }
+
+  localStorage.setItem("gotRicked", "yeeeeeee mate")
+  return false
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter()
+  const router = useRouter();
+
+  // check if it's aprilFools day
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (isItAprilFoolDay()) {
+    if (isItAprilFoolDay() && !gotRickRolledBefore()) {
       router.push("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
     }
   }, []);

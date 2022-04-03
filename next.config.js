@@ -10,7 +10,10 @@ const dummyImageDomains = [
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: [...dummyImageDomains],
+    domains: [
+      ...dummyImageDomains,
+      "avatars.githubusercontent.com"
+    ],
   },
   eslint: {
     dirs: ["pages", "components"], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)

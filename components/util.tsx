@@ -13,7 +13,7 @@ export function roundMatrix(matrix: number[][], pow = 1e-2) {
 export function Show2DMatrix({ label, matrix, className }: { label: string, matrix: any[][], className?: string }) {
     return <div className={"flex justify-center items-center " + className}>
         {
-            label && <h1 className="text-2xl px-2">{label}</h1>
+            label && <h1 className="px-2 text-2xl">{label}</h1>
         }
 
         <div className="flex justify-center rounded-lg border-x-2">
@@ -39,7 +39,7 @@ export function Show2DMatrix({ label, matrix, className }: { label: string, matr
 export function Show1DMatrix({ label, matrix, className }: { label: string, matrix: any[], className?: string }) {
     return <div className={"flex justify-center items-center " + className}>
         {
-            label && <h1 className="text-2xl px-2">{label}</h1>
+            label && <h1 className="px-2 text-2xl">{label}</h1>
         }
         <div className="flex justify-center rounded-lg border-x-2">
             <table>

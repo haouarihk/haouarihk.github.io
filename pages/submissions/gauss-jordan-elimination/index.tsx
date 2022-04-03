@@ -63,22 +63,22 @@ function GaussJordan() {
 
 
     return <div className="md:p-20 lg:p-52">
-        <div className="p-3 rounded-lg bg-gray-800">
-            <h1 className="text-2xl px-2 md:m-5">Gauss-Jordan Elimination</h1>
+        <div className="p-3 bg-gray-800 rounded-lg">
+            <h1 className="px-2 text-2xl md:m-5">Gauss-Jordan Elimination</h1>
             Gauss-Jordan Elimination is an algorithm that can be used to solve systems of linear equations and to find the inverse of any invertible matrix. It relies upon three elementary row operations one can use on a matrix: Swap the positions of two of the rows. Multiply one of the rows by a nonzero scalar.
-            <h1 className="text-2xl px-2 m-5">A*X=B</h1>
+            <h1 className="px-2 m-5 text-2xl">A*X=B</h1>
         </div>
 
         <form className="flex flex-col justify-center items-center">
 
-            <div className="w-full p-5 border-b-2 ">
+            <div className="p-5 w-full border-b-2 ">
                 <Show2DMatrix label="A=" matrix={A} className="p-3" />
-                <textarea onChange={test(setA, setErrA)} className="appearance-none block w-full h-96 bg-gray-600 text-gray-300 border border-gray-600 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-gray-500" id="grid-first-name" rows={3} defaultValue={JSON.stringify(A, null, 4)} />
+                <textarea onChange={test(setA, setErrA)} className="block py-3 px-4 mb-3 w-full h-96 leading-tight text-gray-300 bg-gray-600 focus:bg-gray-700 rounded border border-gray-600 focus:border-gray-500 focus:outline-none appearance-none" id="grid-first-name" rows={3} defaultValue={JSON.stringify(A, null, 4)} />
                 {errA && <h4 className="text-white bg-red-600 rounded-lg">{errA}</h4>}
             </div>
-            <div className="w-full p-5">
+            <div className="p-5 w-full">
                 <Show1DMatrix label="B=" matrix={B} className="p-3" />
-                <textarea onChange={test(setB, setErrB)} className="appearance-none block w-full h-40 bg-gray-600 text-gray-300 border border-gray-600 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-gray-500" id="grid-first-name" rows={3} defaultValue={JSON.stringify(B, null, 4)} />
+                <textarea onChange={test(setB, setErrB)} className="block py-3 px-4 mb-3 w-full h-40 leading-tight text-gray-300 bg-gray-600 focus:bg-gray-700 rounded border border-gray-600 focus:border-gray-500 focus:outline-none appearance-none" id="grid-first-name" rows={3} defaultValue={JSON.stringify(B, null, 4)} />
                 {errB && <h4 className="text-white bg-red-600 rounded-lg">{errB}</h4>}
             </div>
 
@@ -91,8 +91,8 @@ function GaussJordan() {
             </div>
 
             {/* submit button */}
-            <div className="w-full p-5 px-3">
-                <button onClick={solve} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <div className="p-5 px-3 w-full">
+                <button onClick={solve} className="py-2 px-4 font-bold text-white bg-blue-500 hover:bg-blue-700 rounded focus:outline-2 focus:outline-none">
                     Solve
                 </button>
                 {errG && <h4 className="text-white bg-red-600 rounded-lg">{errG}</h4>}

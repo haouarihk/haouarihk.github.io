@@ -37,7 +37,7 @@ const CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 if (!CLIENT_ID) console.log("client_id was not provided in the env file")
 
 function Btn({ value, onClick }: { value: string, onClick: (value: number) => void }) {
-    return <button onClick={() => onClick(getNum(value))} className="p-6 bg-lime-500 rounded-xl hover:bg-lime-400 active:bg-lime-50">{value}</button>
+    return <button onClick={() => onClick(getNum(value))} className="p-6 bg-lime-500 hover:bg-lime-400 active:bg-lime-50 rounded-xl">{value}</button>
 }
 
 
@@ -65,23 +65,23 @@ export default function PayMethod() {
 
     if (!CLIENT_ID)
         return <div>
-            paypal me At: <a className="select-all text-2xl active:font-bold cursor-pointer " onClick={copyToClipBoard}>{config.paypalMe}</a>
+            paypal me At: <a className="text-2xl active:font-bold cursor-pointer select-all " onClick={copyToClipBoard}>{config.paypalMe}</a>
         </div>
 
 
 
     return <PayPalScriptProvider options={{ "client-id": CLIENT_ID || "" }}>
-        <div className="flex flex-col bg-gray-800 py-6 px-8 gap-10 rounded-3xl">
+        <div className="flex flex-col gap-10 py-6 px-8 bg-gray-800 rounded-3xl">
 
-            <div className="flex overflow-hidden items-center gap-2 rounded-xl text-5xl">
-                <input type="number" value={amount} onChange={(e) => setAmount(+e.target.value)} className="outline-none w-full md:p-3 bg-slate-700 text-white " />
+            <div className="flex overflow-hidden gap-2 items-center text-5xl rounded-xl">
+                <input type="number" value={amount} onChange={(e) => setAmount(+e.target.value)} className="w-full text-white bg-slate-700 outline-none md:p-3 " />
                 <div>${
                     amount > 30 && "🤑"
 
                 }</div>
             </div>
 
-            <div className="flex justify-center items-center flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center items-center">
                 {
                     pays.map((value) => <Btn value={value} key={value} onClick={setAmount} />)
                 }

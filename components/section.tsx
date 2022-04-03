@@ -16,7 +16,7 @@ const Section = ({ title, children, className, delay }: { title?: string, childr
             }
         },
     }} className={className + " p-3 pt-0"} >
-        {title ? <h1 className="ml-4 decoration-0 text-4xl self-center m-4">{title}</h1> : <></>}
+        {title ? <h1 className="self-center m-4 ml-4 text-4xl decoration-0">{title}</h1> : <></>}
         {children}
 
 

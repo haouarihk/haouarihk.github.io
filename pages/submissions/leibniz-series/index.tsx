@@ -62,23 +62,23 @@ function Jacob() {
 
 
     return <div className="md:p-20 lg:p-52">
-        <div className="p-3 rounded-lg bg-gray-800">
-            <h1 className="text-2xl px-2 md:m-5">Leibniz Series</h1>
+        <div className="p-3 bg-gray-800 rounded-lg">
+            <h1 className="px-2 text-2xl md:m-5">Leibniz Series</h1>
             calculating pi using Leibniz series method
         </div>
 
         <form className="flex flex-col justify-center items-center">
-            <div className="w-full p-5">
-                N:<input type="number" value={n} onChange={(e) => setN(+e.target.value)} className="appearance-none  bg-gray-600 text-gray-300 border border-gray-600 rounded  mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-gray-500" />
+            <div className="p-5 w-full">
+                N:<input type="number" value={n} onChange={(e) => setN(+e.target.value)} className="mb-3  leading-tight text-gray-300 bg-gray-600 focus:bg-gray-700 rounded  border border-gray-600 focus:border-gray-500 focus:outline-none appearance-none" />
                 {errB && <h4 className="text-white bg-red-600 rounded-lg">{errB}</h4>}
             </div>
 
             {/* submit button */}
-            <div className="w-full p-5 px-3">
-                <button onClick={solve} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <div className="p-5 px-3 w-full">
+                <button onClick={solve} className="py-2 px-4 font-bold text-white bg-blue-500 hover:bg-blue-700 rounded focus:outline-2 focus:outline-none">
                     Solve
                 </button>
-                {errG && <h4 className="text-white bg-red-600 rounded-lg my-2">{errG}</h4>}
+                {errG && <h4 className="my-2 text-white bg-red-600 rounded-lg">{errG}</h4>}
             </div>
         </form>
 
@@ -105,7 +105,7 @@ function Jacob() {
                 {/* old results */}
                 < div className="p-2">
                     <h1 className="mb-3 border-b-2">Previews results:</h1>
-                    <div className="flex flex-col justify-center flex-wrap ">
+                    <div className="flex flex-col flex-wrap justify-center ">
                         {
                             oldResults.map((e, i) =>
                                 <div key={i}>{e}</div>

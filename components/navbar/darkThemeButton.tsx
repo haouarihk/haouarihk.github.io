@@ -5,7 +5,7 @@ export default function DarkThemeButton() {
   const { darkMode, setDarkMode } = usePreferences()
   return (
     <div onClick={() => setDarkMode()}>
-      <button className="p-3 mr-6 hover:bg-primary-darken dark:hover:bg-primary rounded-full border-black cursor-pointer">
+      <button className="p-3 mr-6 rounded-full border-black cursor-pointer hover:bg-primary-darken dark:hover:bg-primary">
         {/* <SunIcon className="hidden h-5 w-5 text-white dark:block" />
             <MoonIcon className="h-5 w-5 text-black dark:hidden" /> */}
 

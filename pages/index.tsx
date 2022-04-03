@@ -21,13 +21,13 @@ const Home: NextPage = () => {
 
       <Section delay={1.5} className="flex justify-center  items-center">
         <div
-          className="card select-none cursor-pointer p-8"
+          className="p-8 cursor-pointer select-none card"
           onClick={() => router.push("/cv.pdf")}
         >
           View CV
         </div>
         <div
-          className="card select-none cursor-pointer px-4"
+          className="px-4 cursor-pointer select-none card"
           onClick={() => router.push("/projects")}
         >
           Projects
