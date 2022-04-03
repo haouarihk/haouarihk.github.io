@@ -1,7 +1,4 @@
 // import PFP from "./pfp";
-
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import config from "../../config";
 import DarkThemeButton from "./darkThemeButton";
@@ -34,7 +31,6 @@ const OpenedVariants: Variants = {
 
 
 const NavBar = () => {
-  const router = useRouter();
   const [opened, setOpened] = useState(false);
 
   const toggleOpened = () => setOpened(!opened);
