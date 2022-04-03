@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { PreferencesProvider } from '../context/preferences';
 
 const aprilFools = {
   month: 3,
@@ -14,6 +15,12 @@ function isItAprilFoolDay() {
   return now.getMonth() == aprilFools.month && now.getDate() == aprilFools.date;
 }
 
+function gotRickRolledBefore() {
+  if (!localStorage.getItem("gotRicked")) {
+    return
+  }
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   useEffect(() => {
@@ -23,7 +30,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  return <Layout> <Component {...pageProps} /> </Layout>
+  return <PreferencesProvider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  </PreferencesProvider>
+
 }
 
 export default MyApp

@@ -2,7 +2,7 @@ import Head from "next/head"
 
 import config from "../config"
 import Footer from "./Footer"
-import NavBar from "./navBar"
+import NavBar from "./navbar"
 
 const Layout = ({ children }: { children: any }) => {
     return <div className="h-100">
@@ -15,7 +15,7 @@ const Layout = ({ children }: { children: any }) => {
 
         <NavBar />
 
-        <main className="h-full flex flex-col justify-center align-center py-5 md:px-5" style={{ background: "rgb(67, 81, 101)" }}>
+        <main className="h-full flex flex-col justify-center align-center py-5 md:px-5 min-h-screen" style={{ background: "rgb(67, 81, 101)" }}>
             {children}
         </main>
 
