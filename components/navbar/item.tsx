@@ -23,7 +23,7 @@ export default function NavItem({
     <Link href={to} passHref>
       <div
         onClick={onClick}
-        className=" py-2 px-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md "
+        className=" py-2 px-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md cursor-pointer "
       >
         {children}
       </div>
