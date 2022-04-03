@@ -6,9 +6,16 @@ import { useState } from "react";
 import config from "../../config";
 import DarkThemeButton from "./darkThemeButton";
 import { motion, AnimatePresence, Variants } from "framer-motion"
+import NavItem from "./item";
 // import Image from "next/image"
 
-
+const links = [
+  { name: "Profile", to: '/' },
+  { name: "Projects", to: "/projects" },
+  { name: "Submissions", to: "/submissions" },
+  { name: "Contact Me", to: "/contact-me" },
+  { name: "Paypal Me", to: "/paypal-me" },
+];
 
 const selected =
   "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium";
@@ -32,33 +39,11 @@ const NavBar = () => {
 
   const toggleOpened = () => setOpened(!opened);
 
-  const btns = (
-    <>
-      <div
-        className={router.pathname == "/" ? selected : notSelected}
-        aria-current="page"
-      >
-        <Link href="/"> Profile</Link>
-      </div>
-      <div className={router.pathname == "/projects" ? selected : notSelected}>
-        <Link href="/projects">Projects</Link>
-      </div>
-      <div
-        className={router.pathname == "/submissions" ? selected : notSelected}
-      >
-        <Link href="/submissions">Submissions</Link>
-      </div>
-      <div
-        className={router.pathname == "/contact-me" ? selected : notSelected}
-      >
-        <Link href="/contact-me">Contact Me</Link>
-      </div>
-
-      <div className={router.pathname == "/paypal-me" ? selected : notSelected}>
-        <Link href="/paypal-me">Paypal Me</Link>
-      </div>
-    </>
-  );
+  const linksx = links.map((link) => (
+    <NavItem key={link.to} to={link.to}>
+      {link.name}
+    </NavItem>
+  ))
 
   return (
     <AnimatePresence >
@@ -113,7 +98,7 @@ const NavBar = () => {
               <div className="hidden ml-6 md:block">
                 <div className="flex space-x-4">
                   {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                  {btns}
+                  {linksx}
                 </div>
               </div>
             </div>
@@ -132,7 +117,7 @@ const NavBar = () => {
             animate={opened ? "opened" : "closed"}
             className="overflow-hidden sm:block sm:ml-6 md:hidden">
             <div className="flex flex-col space-x-4">
-              {btns}
+              {linksx}
             </div>
           </motion.div>
 
