@@ -40,7 +40,7 @@ const NavBar = () => {
     <AnimatePresence >
       <div className="z-20 bg-gray-800 select-none">
         <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="flex relative justify-between items-center h-16">
+          <div className="flex relative justify-between items-center h-16 md:h-auto">
             <div className="flex absolute inset-y-0 left-0 items-center md:hidden">
               {/* <!-- Mobile menu button--> */}
               <button
@@ -86,16 +86,16 @@ const NavBar = () => {
                 {/* logo if you want */}
               </div>
 
-              <div className="hidden ml-6 md:block">
-                <div className="flex space-x-4">
+              <div className="hidden md:block">
+                <div className="flex space-x-2 xl:space-x-12 2xl:space-x-20">
                   {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                   {linksx}
                 </div>
               </div>
             </div>
-            <div className="flex absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:pr-0 sm:ml-6">
-              <DarkThemeButton />
-              <div className="relative ml-3">
+            <div className="flex right-0 items-center sm:static sm:pr-0">
+              {/* <DarkThemeButton /> */}
+              <div className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="w-8 h-8 rounded-full" src={config.pfp} alt="" />
               </div>
@@ -105,10 +105,9 @@ const NavBar = () => {
           <motion.div
             variants={OpenedVariants}
             animate={opened ? "opened" : "closed"}
-            className="overflow-hidden sm:block sm:ml-6 md:hidden">
-            <div className="flex flex-col space-x-4">
-              {linksx}
-            </div>
+            className="flex overflow-hidden flex-col justify-center text-center sm:block sm:ml-6 md:hidden">
+            {linksx}
+
           </motion.div>
 
         </div>

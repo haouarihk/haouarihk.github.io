@@ -1,4 +1,5 @@
 // import next link
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
@@ -21,12 +22,12 @@ export default function NavItem({
     </div>
   ) : (
     <Link href={to} passHref>
-      <div
+      <motion.div
         onClick={onClick}
         className=" py-2 px-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md cursor-pointer "
       >
         {children}
-      </div>
+      </motion.div>
     </Link>
   );
 }
