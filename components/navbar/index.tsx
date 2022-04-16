@@ -24,22 +24,23 @@ const OpenedVariants: Variants = {
   }
 }
 
+const linksx = links.map((link) => (
+  <NavItem key={link.to} to={link.to}>
+    {link.name}
+  </NavItem>
+))
+
 
 const NavBar = () => {
   const [opened, setOpened] = useState(false);
 
   const toggleOpened = () => setOpened(!opened);
 
-  const linksx = links.map((link) => (
-    <NavItem key={link.to} to={link.to}>
-      {link.name}
-    </NavItem>
-  ))
 
   return (
     <AnimatePresence >
       <div className="z-20 bg-gray-800 select-none">
-        <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="p-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex relative justify-between items-center h-16 md:h-auto">
             <div className="flex absolute inset-y-0 left-0 items-center md:hidden">
               {/* <!-- Mobile menu button--> */}
@@ -92,6 +93,7 @@ const NavBar = () => {
                   {linksx}
                 </div>
               </div>
+
             </div>
             <div className="flex right-0 items-center sm:static sm:pr-0">
               {/* <DarkThemeButton /> */}
@@ -109,7 +111,6 @@ const NavBar = () => {
             {linksx}
 
           </motion.div>
-
         </div>
       </div>
     </AnimatePresence>
