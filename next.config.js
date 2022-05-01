@@ -8,6 +8,15 @@ const dummyImageDomains = [
 ];
 
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/.well-known/matrix/server',
+        destination: '/.well-known/matrix/server.json',
+        permanent: true,
+      },
+    ]
+  },
   reactStrictMode: true,
   images: {
     domains: [
