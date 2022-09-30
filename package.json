@@ -4,17 +4,18 @@
   "author": "Haouari Haitam kouider",
   "private": true,
   "scripts": {
-    "build": "qwik build",
+    "build": "yarn build.types && yarn build.client && yarn build.ssg",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
-    "build.static": "vite build --ssr src/entry.static.tsx",
     "build.types": "tsc --incremental --noEmit",
+    "build.ssg": "vite build --ssr src/entry.static.tsx && node ./server/entry.static.js",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
+    "serve": "wrangler pages dev ./dist",
     "ssg": "node server/entry.static",
     "start": "vite --open --mode ssr",
     "qwik": "qwik"
@@ -44,7 +45,8 @@
     "tailwindcss": "^3.1.8",
     "typescript": "4.8.3",
     "vite": "3.1.1",
-    "vite-tsconfig-paths": "3.5.0"
+    "vite-tsconfig-paths": "3.5.0",
+    "wrangler": "beta"
   },
   "dependencies": {
     "daisyui": "^2.31.0"

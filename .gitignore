@@ -43,3 +43,6 @@ lerna-debug.log*
 
 # logs
 **/*.logs
+
+# Cloudflare
+functions/**/*.js
