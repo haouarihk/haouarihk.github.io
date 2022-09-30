@@ -1,6 +1,7 @@
 {
-  "name": "my-qwik-basic-starter",
-  "description": "Recommended for your first Qwik app",
+  "name": "my-profile-page",
+  "description": "profile page",
+  "author": "Haouari Haitam kouider",
   "private": true,
   "scripts": {
     "build": "qwik build",
