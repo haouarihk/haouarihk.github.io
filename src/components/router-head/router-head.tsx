@@ -21,9 +21,15 @@ export const RouterHead = component$(() => {
         href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap"
         rel="stylesheet"
       />
-      <meta property="og:site_name" content="Qwik" />
-      <meta name="twitter:site" content="@QwikDev" />
-      <meta name="twitter:title" content="Qwik" />
+      <meta content="Haouari Haitam Kouider" property="og:title" />
+      <meta content="Professional Web Developer" property="og:description" />
+      <meta content="https://haouarihk.com" property="og:url" />
+      <meta content="/pfp2.webp" property="og:image" />
+      <meta
+        content="rgb(87, 13, 248)"
+        data-react-helmet="true"
+        name="theme-color"
+      />
       {head.meta.map((m) => (
         <meta {...m} />
       ))}
