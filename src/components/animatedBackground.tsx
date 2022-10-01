@@ -1,11 +1,17 @@
-import { $, component$, useClientEffect$, useStore } from "@builder.io/qwik";
+import {
+  $,
+  component$,
+  useClientEffect$,
+  useMount$,
+  useStore,
+} from "@builder.io/qwik";
 
 export function randomNumber(max: number, min?: number) {
   return Math.floor(Math.random() * max) + (min || 0);
 }
 
-export function randomFromArray(arr: any[]) {
-  return arr[randomNumber(arr.length || 0)];
+export function randomizeArray(arr: any[]) {
+  return arr.sort((a, b) => Math.random() - 0.5);
 }
 
 export function clamp(val: number, max: number, min?: number) {
@@ -18,8 +24,8 @@ export const numberOfItems = 20;
 export const shapes = ["square", "tri", "cir"];
 
 export const directions = [
-  { x: 1, y: 0 },
   { x: 1, y: 1 },
+  { x: 1, y: 0 },
   { x: 0, y: 1 },
   { x: -1, y: -1 },
   { x: -1, y: 0 },
@@ -78,6 +84,19 @@ export default component$(() => {
     storage.items = items;
   });
 
+  const randomize = $(() => {
+    const items = [...storage.items];
+    const randomArray = randomizeArray(directions);
+    for (let i = 0; i < items.length; i++) {
+      const randomDirection =
+        randomArray[i - items.length * Math.floor(i / items.length)];
+      items[i].dx += randomDirection.x * step;
+      items[i].dy += randomDirection.y * step;
+      items[i].dr += Math.random() * 120 - 120;
+    }
+    storage.items = items;
+  });
+
   // animate
   useClientEffect$(() => {
     //---- init
@@ -87,8 +106,8 @@ export default component$(() => {
       window.innerWidth > 576 ? numberOfItems : numberOfItems / 2;
 
     const cItem = () => {
-      const randomShape = randomFromArray(shapes);
-      const randomDirection = randomFromArray(directions);
+      const randomShape = randomizeArray(shapes)[0];
+      const randomDirection = randomizeArray(directions)[0];
       return {
         shape: randomShape,
         x: randomNumber(storage.windowWidth),
@@ -106,17 +125,10 @@ export default component$(() => {
     storage.items = items;
     //
 
-    const int1: any = setInterval(() => {
-      const items = [...storage.items];
-      for (let i = 0; i < items.length; i++) {
-        const randomDirection = randomFromArray(directions);
-
-        items[i].dx += randomDirection.x * step;
-        items[i].dy += randomDirection.y * step;
-        items[i].dr += Math.random() * 120 - 120;
-      }
-      storage.items = items;
-    }, 5000);
+    const int1: any = setInterval(
+      () => window.requestAnimationFrame(randomize),
+      5000
+    );
 
     const update = () => {
       const items = [...storage.items];
@@ -127,22 +139,22 @@ export default component$(() => {
 
         if (items[i].x < 0) {
           items[i].x = 0;
-          items[i].dx *= -1;
+          items[i].dx *= -0.9;
         }
 
         if (items[i].x > storage.windowWidth - 40) {
           items[i].x = storage.windowWidth - 40;
-          items[i].dx *= -1;
+          items[i].dx *= -0.9;
         }
 
         if (items[i].y < 0) {
           items[i].y = 0;
-          items[i].dy *= -1;
+          items[i].dy *= -0.9;
         }
 
         if (items[i].y > storage.windowHeight - 40) {
           items[i].y = storage.windowHeight - 40;
-          items[i].dy *= -1;
+          items[i].dy *= -0.9;
         }
 
         items[i].rotation = clamp(items[i].rotation, 180);
@@ -183,7 +195,7 @@ export default component$(() => {
             return (
               <div
                 key={i}
-                className="absolute aspect-square w-0 h-0 transition-all"
+                className="absolute aspect-square w-0 h-0"
                 style={{
                   left: e.x + "px",
                   top: e.y + "px",
@@ -198,7 +210,7 @@ export default component$(() => {
             return (
               <div
                 key={i}
-                className="absolute aspect-square bg-primary w-10 h-10 roudned-full overflow-hidden transition-all"
+                className="absolute aspect-square bg-primary w-10 h-10 roudned-full overflow-hidden "
                 style={{
                   left: e.x + "px",
                   top: e.y + "px",
@@ -211,7 +223,7 @@ export default component$(() => {
             return (
               <div
                 key={i}
-                className="absolute aspect-square bg-[#555] w-10 h-10 transition-all"
+                className="absolute aspect-square bg-[#555] w-10 h-10 "
                 style={{
                   left: e.x + "px",
                   top: e.y + "px",
