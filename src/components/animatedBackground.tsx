@@ -1,4 +1,4 @@
-import { component$, useClientEffect$, useStore } from "@builder.io/qwik";
+import { $, component$, useClientEffect$, useStore } from "@builder.io/qwik";
 
 export function randomNumber(max: number, min?: number) {
   return Math.floor(Math.random() * max) + (min || 0);
@@ -62,6 +62,18 @@ export default component$(() => {
     };
   });
 
+  const applyForce = $((pointB: { x: number; y: number }, strength: number) => {
+    const items = [...storage.items];
+    for (let i = 0; i < items.length; i++) {
+      const randomRotation = Math.random() * 190 - 90;
+      const randomDirection = randomFromArray(directions);
+      items[i].dx += clamp(pointB.x - items[i].x, 1, -1) * strength;
+      items[i].dy += clamp(pointB.y - items[i].y, 1, -1) * strength;
+      items[i].dr = randomRotation;
+    }
+    storage.items = items;
+  });
+
   // animate
   useClientEffect$(() => {
     //---- init
@@ -70,10 +82,10 @@ export default component$(() => {
     const nOfItems =
       window.innerWidth > 576 ? numberOfItems : numberOfItems / 2;
 
-    for (let i = 0; i < nOfItems; i++) {
+    const cItem = () => {
       const randomShape = randomFromArray(shapes);
       const randomDirection = randomFromArray(directions);
-      items[i] = {
+      return {
         shape: randomShape,
         x: randomNumber(storage.windowWidth),
         y: randomNumber(storage.windowHeight),
@@ -82,6 +94,10 @@ export default component$(() => {
         dy: randomDirection.y * Math.random() * step,
         dr: 0,
       };
+    };
+
+    for (let i = 0; i < nOfItems; i++) {
+      items[i] = cItem();
     }
     storage.items = items;
     //
@@ -89,12 +105,11 @@ export default component$(() => {
     const int1: any = setInterval(() => {
       const items = [...storage.items];
       for (let i = 0; i < items.length; i++) {
-        const randomRotation = Math.random() * 190 - 90;
         const randomDirection = randomFromArray(directions);
 
-        items[i].dx = randomDirection.x * Math.random() * step;
-        items[i].dy = randomDirection.y * Math.random() * step;
-        items[i].dr = randomRotation;
+        items[i].dx += randomDirection.x * step;
+        items[i].dy += randomDirection.y * step;
+        items[i].dr += Math.random() * 120 - 120;
       }
       storage.items = items;
     }, 5000);
@@ -108,31 +123,12 @@ export default component$(() => {
         items[i].dx *= 0.95;
         items[i].dy *= 0.95;
         items[i].dr *= 0.95;
-        items[i].x = clamp(items[i].x, storage.windowWidth);
-        items[i].y = clamp(items[i].y, storage.windowHeight);
+        items[i].x = clamp(items[i].x, storage.windowWidth - 40);
+        items[i].y = clamp(items[i].y, storage.windowHeight - 40);
         items[i].rotation = clamp(items[i].rotation, 180);
       }
       storage.items = items;
     }, 100);
-
-    let start: number | null = null;
-    let last: number = 0;
-    window.requestAnimationFrame(fpsMeasureLoop);
-    function fpsMeasureLoop(timestamp: number) {
-      if (start == null) {
-        last = start = timestamp;
-        return;
-      }
-
-      const dTime = timestamp - last;
-
-      if (dTime > 33) {
-        console.log("throttle");
-        // If more than 33ms since last frame (i.e. below 30fps)
-        storage.items.pop();
-      }
-      window.requestAnimationFrame(fpsMeasureLoop);
-    }
 
     return () => {
       clearInterval(int1);
@@ -141,7 +137,18 @@ export default component$(() => {
   });
 
   return (
-    <div class="gap-3 p-10 bg-black text-white h-screen overflow-hidden">
+    <div
+      class="gap-3 p-10 bg-black text-white h-screen overflow-hidden"
+      window:onClick$={(e) => {
+        applyForce(
+          {
+            x: e.clientX,
+            y: e.clientY,
+          },
+          -step
+        );
+      }}
+    >
       {storage.items.map((e, i) => {
         switch (e.shape) {
           case "tri":
