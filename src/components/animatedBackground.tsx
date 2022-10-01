@@ -86,9 +86,10 @@ export default component$(() => {
 
   const randomize = $(() => {
     const items = [...storage.items];
+    const randomArray = randomizeArray(directions);
     for (let i = 0; i < items.length; i++) {
-      const randomArray = randomizeArray(directions);
-      const randomDirection = randomArray[0];
+      const k = directions.length * Math.floor(i / directions.length);
+      const randomDirection = randomArray[i - k];
       items[i].dx += randomDirection.x * step;
       items[i].dy += randomDirection.y * step;
       items[i].dr += Math.random() * 120 - 120;
