@@ -118,7 +118,7 @@ export default component$(() => {
       storage.items = items;
     }, 5000);
 
-    const int2: any = setInterval(() => {
+    const update = () => {
       const items = [...storage.items];
       for (let i = 0; i < items.length; i++) {
         items[i].x += items[i].dx;
@@ -153,11 +153,14 @@ export default component$(() => {
         items[i].dr *= 0.95;
       }
       storage.items = items;
-    }, 100);
+
+      window.requestAnimationFrame(update);
+    };
+
+    window.requestAnimationFrame(update);
 
     return () => {
       clearInterval(int1);
-      clearInterval(int2);
     };
   });
 
@@ -170,7 +173,7 @@ export default component$(() => {
             x: e.clientX,
             y: e.clientY,
           },
-          -step*100
+          -step * 100
         );
       }}
     >
