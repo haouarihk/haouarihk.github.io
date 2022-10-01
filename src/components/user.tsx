@@ -20,7 +20,7 @@ export default component$(
             draggable="false"
             height={props.size}
             width={props.size}
-            class="bg-pink-400  rounded-full overflow-hidden"
+            class="bg-pink-400 select-none rounded-full overflow-hidden"
             src="/pfp.jpeg"
           />
         </div>
