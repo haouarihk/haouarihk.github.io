@@ -120,12 +120,33 @@ export default component$(() => {
         items[i].x += items[i].dx;
         items[i].y += items[i].dy;
         items[i].rotation += items[i].dr;
+
+        if (items[i].x < 0) {
+          items[i].x = 0;
+          items[i].dx *= -1;
+        }
+
+        if (items[i].x > storage.windowWidth - 40) {
+          items[i].x = storage.windowWidth - 40;
+          items[i].dx *= -1;
+        }
+
+        if (items[i].y < 0) {
+          items[i].y = 0;
+          items[i].dy *= -1;
+        }
+
+        if (items[i].y > storage.windowHeight - 40) {
+          items[i].y = storage.windowHeight - 40;
+          items[i].dy *= -1;
+        }
+
+        items[i].rotation = clamp(items[i].rotation, 180);
+
+        // resistant
         items[i].dx *= 0.95;
         items[i].dy *= 0.95;
         items[i].dr *= 0.95;
-        items[i].x = clamp(items[i].x, storage.windowWidth - 40);
-        items[i].y = clamp(items[i].y, storage.windowHeight - 40);
-        items[i].rotation = clamp(items[i].rotation, 180);
       }
       storage.items = items;
     }, 100);
