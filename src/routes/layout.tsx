@@ -9,12 +9,7 @@ export default component$(() => {
   });
 
   return (
-    <div
-      class="relative h-screen w-screen overflow-auto"
-      onScroll$={(e) => {
-        console.log(e.view?.scrollY);
-      }}
-    >
+    <div class="relative h-screen w-screen overflow-auto">
       <div
         class="fixed -z-10 w-screen h-screen bg-black"
         // style={{
