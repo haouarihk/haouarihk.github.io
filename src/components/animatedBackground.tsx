@@ -66,9 +66,13 @@ export default component$(() => {
     const items = [...storage.items];
     for (let i = 0; i < items.length; i++) {
       const randomRotation = Math.random() * 190 - 90;
-      const randomDirection = randomFromArray(directions);
-      items[i].dx += clamp(pointB.x - items[i].x, 1, -1) * strength;
-      items[i].dy += clamp(pointB.y - items[i].y, 1, -1) * strength;
+      const distance = Math.sqrt(
+        (pointB.x - items[i].x) ** 2 + (pointB.y - items[i].y) ** 2
+      );
+      items[i].dx +=
+        (clamp(pointB.x - items[i].x, 1, -1) * strength) / distance;
+      items[i].dy +=
+        (clamp(pointB.y - items[i].y, 1, -1) * strength) / distance;
       items[i].dr = randomRotation;
     }
     storage.items = items;
@@ -166,7 +170,7 @@ export default component$(() => {
             x: e.clientX,
             y: e.clientY,
           },
-          -step
+          -step*100
         );
       }}
     >
