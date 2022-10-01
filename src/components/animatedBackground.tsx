@@ -66,7 +66,11 @@ export default component$(() => {
   useClientEffect$(() => {
     //---- init
     const items: any = [];
-    for (let i = 0; i < numberOfItems; i++) {
+
+    const nOfItems =
+      window.innerWidth > 576 ? numberOfItems : numberOfItems / 2;
+
+    for (let i = 0; i < nOfItems; i++) {
       const randomShape = randomFromArray(shapes);
       const randomDirection = randomFromArray(directions);
       items[i] = {
@@ -110,6 +114,25 @@ export default component$(() => {
       }
       storage.items = items;
     }, 100);
+
+    let start: number | null = null;
+    let last: number = 0;
+    window.requestAnimationFrame(fpsMeasureLoop);
+    function fpsMeasureLoop(timestamp: number) {
+      if (start == null) {
+        last = start = timestamp;
+        return;
+      }
+
+      const dTime = timestamp - last;
+
+      if (dTime > 33) {
+        console.log("throttle");
+        // If more than 33ms since last frame (i.e. below 30fps)
+        storage.items.pop();
+      }
+      window.requestAnimationFrame(fpsMeasureLoop);
+    }
 
     return () => {
       clearInterval(int1);
