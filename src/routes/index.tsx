@@ -20,7 +20,7 @@ export default component$(() => {
   );
 
   return (
-    <div class="w-full h-full backdrop-blur-0 bg-transparent">
+    <div class="w-full h-full backdrop-blur-0 bg-transparent select-none">
       {/* head */}
       <div class="hero relative text-white flex items-center justify-center bg-cover h-screen">
         {/* <div class="hero-overlay bg-opacity-60"></div> */}
