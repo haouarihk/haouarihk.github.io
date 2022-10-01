@@ -86,10 +86,9 @@ export default component$(() => {
 
   const randomize = $(() => {
     const items = [...storage.items];
-    const randomArray = randomizeArray(directions);
     for (let i = 0; i < items.length; i++) {
-      const randomDirection =
-        randomArray[i - items.length * Math.floor(i / items.length)];
+      const randomArray = randomizeArray(directions);
+      const randomDirection = randomArray[0];
       items[i].dx += randomDirection.x * step;
       items[i].dy += randomDirection.y * step;
       items[i].dr += Math.random() * 120 - 120;
@@ -185,7 +184,7 @@ export default component$(() => {
             x: e.clientX,
             y: e.clientY,
           },
-          -step * 100
+          -step * (storage.windowWidth * 0.1)
         );
       }}
     >
