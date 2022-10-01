@@ -73,11 +73,6 @@
     source-map "0.7.4"
     vfile "5.3.5"
 
-"@builder.io/qwik-react@0.0.102":
-  version "0.0.102"
-  resolved "https://registry.yarnpkg.com/@builder.io/qwik-react/-/qwik-react-0.0.102.tgz#be0489e0022863a7bf3b092249d5af7542b41b50"
-  integrity sha512-2ay+rhDptNfS6Vuhm2vwfskCcR73sH5wda/zmt3BWuOdcBZMmykI3d29jwd2B8lOOl0vovkEL/ls6GuDr0lfHg==
-
 "@builder.io/qwik@0.9.0":
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/@builder.io/qwik/-/qwik-0.9.0.tgz#c12b8b49e6959a381dcd9bf3475a7750ffcb230e"
@@ -2983,6 +2978,15 @@ postcss@^8.4.14, postcss@^8.4.16:
   version "8.4.16"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.16.tgz#33a1d675fac39941f5f445db0de4db2b6e01d43c"
   integrity sha512-ipHE1XBvKzm5xI7hiHCZJCSugxvsdq2mPnsq5+UF+VHCjiBvtDrlxJfMBToWaP9D5XlgNmcFGqoHmUn0EYEaRQ==
+  dependencies:
+    nanoid "^3.3.4"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
+
+postcss@^8.4.17:
+  version "8.4.17"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.17.tgz#f87863ec7cd353f81f7ab2dec5d67d861bbb1be5"
+  integrity sha512-UNxNOLQydcOFi41yHNMcKRZ39NeXlr8AxGuZJsdub8vIb12fHzcq37DTU/QtbI6WLxNg2gF9Z+8qtRwTj1UI1Q==
   dependencies:
     nanoid "^3.3.4"
     picocolors "^1.0.0"
