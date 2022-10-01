@@ -23,7 +23,7 @@ export default component$(() => {
             <h2 class="card-title">{e.name}</h2>
             <p>{e.description}</p>
             <div class="card-actions justify-end">
-              <button class="btn">Github</button>
+              <a href={e.github} class="btn">Github</a>
             </div>
           </div>
         </div>
