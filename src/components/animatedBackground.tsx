@@ -19,7 +19,7 @@ export function clamp(val: number, max: number, min?: number) {
 }
 
 export const step = 20;
-export const numberOfItems = 20;
+export const numberOfItems = 100;
 
 export const shapes = ["square", "tri", "cir"];
 
@@ -103,7 +103,7 @@ export default component$(() => {
     const items: any = [];
 
     const nOfItems =
-      window.innerWidth > 576 ? numberOfItems : numberOfItems / 2;
+      window.innerWidth > 576 ? numberOfItems : numberOfItems / 4;
 
     const cItem = () => {
       const randomShape = randomizeArray(shapes)[0];
@@ -125,7 +125,7 @@ export default component$(() => {
     storage.items = items;
     //
 
-    const int1: any = setInterval(
+    const int1 = setInterval(
       () => window.requestAnimationFrame(randomize),
       5000
     );
