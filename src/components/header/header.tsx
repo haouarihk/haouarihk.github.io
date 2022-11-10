@@ -1,5 +1,5 @@
 import { component$, useStore } from "@builder.io/qwik";
-import { useLocation } from "@builder.io/qwik-city";
+import { Link, useLocation } from "@builder.io/qwik-city";
 import User from "../user";
 import Darkmode from "./darkmode";
 
@@ -14,7 +14,7 @@ export const LinkItem = component$((props: { to: string; name: string }) => {
   const currentPage = router.pathname == props.to;
   return (
     <li>
-      <a
+      <Link
         href={props.to}
         class={
           currentPage
@@ -24,7 +24,7 @@ export const LinkItem = component$((props: { to: string; name: string }) => {
         aria-current="page"
       >
         {props.name}
-      </a>
+      </Link>
     </li>
   );
 });
