@@ -6,6 +6,15 @@ import {
   useStore,
 } from "@builder.io/qwik";
 
+
+export interface Intity {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+
 export function randomNumber(max: number, min?: number) {
   return Math.floor(Math.random() * max) + (min || 0);
 }
@@ -18,8 +27,12 @@ export function clamp(val: number, max: number, min?: number) {
   return Math.min(Math.max(val, min || 0), max);
 }
 
-export const step = 20;
-export const numberOfItems = 100;
+export const step = 0.5;
+export const numberOfItems = 42;
+export const minSpeed = 0.5;
+export const maxSpeed = 1;
+export const maxAcc = 0.2;
+export const airResistant = 0.99;
 
 export const shapes = ["square", "tri", "cir"];
 
@@ -40,6 +53,8 @@ export default component$(() => {
       shape: "square" | "tri" | "cir";
       dx: number;
       dy: number;
+      ax: number;
+      ay: number;
       dr: number;
       x: number;
       y: number;
@@ -55,7 +70,7 @@ export default component$(() => {
   useClientEffect$(() => {
     console.log("event fired");
     const k = (e: any) => {
-      console.log({ ...e.target });
+      // console.log({ ...e.target });
       storage.windowWidth = e.target?.innerWidth || 100;
       storage.windowHeight = e.target?.innerHeight || 100;
     };
@@ -71,15 +86,18 @@ export default component$(() => {
   const applyForce = $((pointB: { x: number; y: number }, strength: number) => {
     const items = [...storage.items];
     for (let i = 0; i < items.length; i++) {
-      const randomRotation = Math.random() * 190 - 90;
+      // const randomRotation = Math.random() * 190 - 90;
       const distance = Math.sqrt(
         (pointB.x - items[i].x) ** 2 + (pointB.y - items[i].y) ** 2
       );
-      items[i].dx +=
+
+
+      items[i].dx += 5 *
         (clamp(pointB.x - items[i].x, 1, -1) * strength) / distance;
-      items[i].dy +=
+      items[i].dy += 5 *
         (clamp(pointB.y - items[i].y, 1, -1) * strength) / distance;
-      items[i].dr = randomRotation;
+
+      // items[i].dr = randomRotation;
     }
     storage.items = items;
   });
@@ -90,6 +108,8 @@ export default component$(() => {
     for (let i = 0; i < items.length; i++) {
       const k = directions.length * Math.floor(i / directions.length);
       const randomDirection = randomArray[i - k];
+      items[i].ax += randomDirection.x * step;
+      items[i].ay += randomDirection.y * step;
       items[i].dx += randomDirection.x * step;
       items[i].dy += randomDirection.y * step;
       items[i].dr += Math.random() * 120 - 120;
@@ -115,6 +135,8 @@ export default component$(() => {
         rotation: Math.random() * 190,
         dx: randomDirection.x * Math.random() * step,
         dy: randomDirection.y * Math.random() * step,
+        ax: randomDirection.x * Math.random() * step,
+        ay: randomDirection.y * Math.random() * step,
         dr: 0,
       };
     };
@@ -133,38 +155,58 @@ export default component$(() => {
     const update = () => {
       const items = [...storage.items];
       for (let i = 0; i < items.length; i++) {
-        items[i].x += items[i].dx;
-        items[i].y += items[i].dy;
-        items[i].rotation += items[i].dr;
 
-        if (items[i].x < 0) {
-          items[i].x = 0;
-          items[i].dx *= -0.95;
+        if (items[i].x < -50) {
+          items[i].x = storage.windowWidth;
+          // items[i].ax *= airResistant;
+          // items[i].dx *= -airResistant;
         }
 
-        if (items[i].x > storage.windowWidth - 40) {
-          items[i].x = storage.windowWidth - 40;
-          items[i].dx *= -0.95;
+        if (items[i].x > storage.windowWidth) {
+          items[i].x = -50;
+          // items[i].ax *= airResistant;
+          // items[i].dx *= -airResistant;
         }
 
-        if (items[i].y < 0) {
-          items[i].y = 0;
-          items[i].dy *= -0.95;
+        if (items[i].y < -20) {
+          items[i].y = storage.windowHeight;
+          // items[i].ay *= airResistant;
+          // items[i].dy *= -airResistant;
         }
 
-        if (items[i].y > storage.windowHeight - 40) {
-          items[i].y = storage.windowHeight - 40;
-          items[i].dy *= -0.95;
+        if (items[i].y > storage.windowHeight) {
+          items[i].y = -20;
+          // items[i].ay *= airResistant;
+          // items[i].dy *= -airResistant;
         }
 
         items[i].rotation = clamp(items[i].rotation, 180);
 
         // resistant
-        items[i].dx *= 0.98;
-        items[i].dy *= 0.98;
-        items[i].dr *= 0.98;
+        items[i].ax *= airResistant;
+        items[i].ay *= airResistant;
+
+        items[i].dx *= airResistant;
+        items[i].dy *= airResistant;
+        items[i].dr *= airResistant;
+
+
+
+
+        items[i].dx += Math.abs(items[i].ax) < maxAcc ? items[i].ax : maxAcc;
+        items[i].dy += Math.abs(items[i].ay) < maxAcc ? items[i].ay : maxAcc;
+
+        items[i].x += Math.abs(items[i].dx) > minSpeed ? items[i].dx : (items[i].dx < 0 ? -minSpeed : minSpeed);
+        items[i].y += Math.abs(items[i].dy) > minSpeed ? items[i].dy : (items[i].dy < 0 ? -minSpeed : minSpeed);
+
+        items[i].rotation += Math.abs(items[i].dr) > minSpeed ? items[i].dr : minSpeed;
       }
+
+
+
       storage.items = items;
+
+
 
       window.requestAnimationFrame(update);
     };
