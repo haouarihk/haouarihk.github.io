@@ -14,7 +14,11 @@ export const RouterHead = component$(() => {
 
       <link rel="canonical" href={loc.href} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link
+        rel="icon"
+        type="image/svg+xml"
+        href="https://avatars.githubusercontent.com/u/57036855?s=400&u=d2750433460c2ac55a3d70fec28391677f5b41c9&v=4"
+      />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link

@@ -1,11 +1,4 @@
-import {
-  $,
-  component$,
-  useClientEffect$,
-  useMount$,
-  useStore,
-} from "@builder.io/qwik";
-
+import { $, component$, useClientEffect$, useStore } from "@builder.io/qwik";
 
 export interface Intity {
   x: number;
@@ -14,25 +7,24 @@ export interface Intity {
   height: number;
 }
 
-
 export function randomNumber(max: number, min?: number) {
   return Math.floor(Math.random() * max) + (min || 0);
 }
 
 export function randomizeArray(arr: any[]) {
-  return arr.sort((a, b) => Math.random() - 0.5);
+  return arr.sort(() => Math.random() - 0.5);
 }
 
 export function clamp(val: number, max: number, min?: number) {
   return Math.min(Math.max(val, min || 0), max);
 }
 
-export const step = 0.5;
+export const step = 0.009;
 export const numberOfItems = 42;
-export const minSpeed = 0.5;
+export const minSpeed = 0.1;
 export const maxSpeed = 1;
-export const maxAcc = 0.2;
-export const airResistant = 0.99;
+export const maxAcc = 0.4;
+export const airResistant = 0.9;
 
 export const shapes = ["square", "tri", "cir"];
 
@@ -91,11 +83,10 @@ export default component$(() => {
         (pointB.x - items[i].x) ** 2 + (pointB.y - items[i].y) ** 2
       );
 
-
-      items[i].dx += 5 *
-        (clamp(pointB.x - items[i].x, 1, -1) * strength) / distance;
-      items[i].dy += 5 *
-        (clamp(pointB.y - items[i].y, 1, -1) * strength) / distance;
+      items[i].dx +=
+        (5 * (clamp(pointB.x - items[i].x - 20, 1, -1) * strength)) / distance;
+      items[i].dy +=
+        (5 * (clamp(pointB.y - items[i].y - 20, 1, -1) * strength)) / distance;
 
       // items[i].dr = randomRotation;
     }
@@ -112,7 +103,7 @@ export default component$(() => {
       items[i].ay += randomDirection.y * step;
       items[i].dx += randomDirection.x * step;
       items[i].dy += randomDirection.y * step;
-      items[i].dr += Math.random() * 120 - 120;
+      // items[i].dr += Math.random() * 120 - 120;
     }
     storage.items = items;
   });
@@ -155,7 +146,6 @@ export default component$(() => {
     const update = () => {
       const items = [...storage.items];
       for (let i = 0; i < items.length; i++) {
-
         if (items[i].x < -50) {
           items[i].x = storage.windowWidth;
           // items[i].ax *= airResistant;
@@ -188,25 +178,29 @@ export default component$(() => {
 
         items[i].dx *= airResistant;
         items[i].dy *= airResistant;
-        items[i].dr *= airResistant;
-
-
-
+        // items[i].dr *= airResistant;
 
         items[i].dx += Math.abs(items[i].ax) < maxAcc ? items[i].ax : maxAcc;
         items[i].dy += Math.abs(items[i].ay) < maxAcc ? items[i].ay : maxAcc;
 
-        items[i].x += Math.abs(items[i].dx) > minSpeed ? items[i].dx : (items[i].dx < 0 ? -minSpeed : minSpeed);
-        items[i].y += Math.abs(items[i].dy) > minSpeed ? items[i].dy : (items[i].dy < 0 ? -minSpeed : minSpeed);
+        items[i].x +=
+          Math.abs(items[i].dx) > minSpeed
+            ? items[i].dx
+            : items[i].dx < 0
+            ? -minSpeed
+            : minSpeed;
+        items[i].y +=
+          Math.abs(items[i].dy) > minSpeed
+            ? items[i].dy
+            : items[i].dy < 0
+            ? -minSpeed
+            : minSpeed;
 
-        items[i].rotation += Math.abs(items[i].dr) > minSpeed ? items[i].dr : minSpeed;
+        items[i].rotation +=
+          Math.abs(items[i].dr) > minSpeed ? items[i].dr : minSpeed;
       }
 
-
-
       storage.items = items;
-
-
 
       window.requestAnimationFrame(update);
     };
@@ -227,7 +221,7 @@ export default component$(() => {
             x: e.clientX,
             y: e.clientY,
           },
-          -step * (storage.windowWidth * 0.1)
+          -step * storage.windowWidth * 10
         );
       }}
     >

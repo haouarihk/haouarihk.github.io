@@ -24,7 +24,7 @@ export default component$(() => {
       {/* head */}
       <div class="hero relative text-white flex items-center justify-center bg-cover h-screen">
         {/* <div class="hero-overlay bg-opacity-60"></div> */}
-        <div class="hero-content flex flex-col md:flex-row justify-between gap-24 md:w-5/12">
+        <div class="hero-content flex flex-col md:flex-row gap-24 xl:gap-80">
           <div class="flex flex-col gap-12">
             <h1 class="text-4xl">
               <span class="font-bold">Professional</span>
@@ -36,7 +36,7 @@ export default component$(() => {
             </div>
           </div>
           <div class="flex kk flex-col gap-12 min-w-fit border-white">
-            <User className="flex-col" />
+            <User className="flex-col w-60" size={"200px"} />
 
             <div class="flex justify-between items-center w-full md:hidden">
               {btns}
