@@ -246,7 +246,7 @@ export default component$(() => {
             return (
               <div
                 key={i}
-                className="absolute aspect-square bg-primary w-10 h-10 roudned-full overflow-hidden "
+                className="absolute aspect-square bg-primary w-10 h-10 roudned-full overflow-hidden"
                 style={{
                   left: e.x + "px",
                   top: e.y + "px",
@@ -269,7 +269,7 @@ export default component$(() => {
             );
         }
       })}
-      <div className="w-screen h-screen top-0 left-0 absolute backdrop-blur-sm backdrop-brightness-50" />
+      <div className="w-screen h-screen top-0 left-0 absolute backdrop-blur-md backdrop-brightness-50" />
     </div>
   );
 });
