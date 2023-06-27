@@ -3,12 +3,7 @@ import { component$ } from "@builder.io/qwik";
 export default component$(() => {
   return (
     <div class="w-full flex justify-between">
-      <div>
-        Made using{" "}
-        <a href="https://qwik.builder.io/" target="_blank" class="font-bold">
-          qwik
-        </a>
-      </div>
+      <div>Thank you! For checking it out</div>
       <div class="hidden xl:block text-xs">
         if you use dark reader extension, you won't be able to see the
         background animations

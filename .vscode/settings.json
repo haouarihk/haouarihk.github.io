@@ -7,5 +7,10 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true
   },
-  "hide-files.files": []
+  "hide-files.files": [],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#1F321B",
+    "titleBar.activeBackground": "#2B4626",
+    "titleBar.activeForeground": "#F9FBF8"
+  }
 }

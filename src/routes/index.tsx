@@ -43,6 +43,7 @@ export default component$(() => {
             </div>
           </div>
         </div>
+
         <div class="absolute bottom-0 left-0 px-4 w-full">
           <Madeusing />
         </div>

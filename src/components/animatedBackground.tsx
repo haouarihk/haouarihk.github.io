@@ -20,7 +20,7 @@ export function clamp(val: number, max: number, min?: number) {
 }
 
 export const step = 0.009;
-export const numberOfItems = 42;
+export const numberOfItems = 40;
 export const minSpeed = 0.1;
 export const maxSpeed = 1;
 export const maxAcc = 0.4;
@@ -246,7 +246,7 @@ export default component$(() => {
             return (
               <div
                 key={i}
-                className="absolute aspect-square bg-primary w-10 h-10 roudned-full overflow-hidden"
+                className="absolute aspect-square bg-primary/60 w-10 h-10 roudned-full overflow-hidden shadow-md shadow-white"
                 style={{
                   left: e.x + "px",
                   top: e.y + "px",
@@ -269,7 +269,8 @@ export default component$(() => {
             );
         }
       })}
-      <div className="w-screen h-screen top-0 left-0 absolute backdrop-blur-md backdrop-brightness-50" />
+
+      <div className="w-screen h-screen top-0 left-0 absolute backdrop-blur-md backdrop-brightness-[0.4]" />
     </div>
   );
 });
