@@ -6,7 +6,7 @@ import Darkmode from "./darkmode";
 export const links: { [key: string]: string } = {
   Main: "/",
   Projects: "/projects",
-  Submissions: "/submissions",
+  // Submissions: "/submissions",
 };
 
 export const LinkItem = component$((props: { to: string; name: string }) => {
