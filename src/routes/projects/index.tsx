@@ -17,13 +17,6 @@ export const projects = [
     github: "https://github.com/youwriteai/model2API",
   },
   {
-    name: "obsidian textgenerator plugin",
-    type: "contribution",
-    description:
-      "Text generator is a handy plugin for Obsidian that helps you generate text content using GPT-3 (OpenAI).",
-    github: "https://github.com/nhaouari/obsidian-textgenerator-plugin",
-  },
-  {
     name: "Golang templating tool",
     description:
       "it's a simple engine that's used for discord bots for templating users info and levels into a graphical image",
@@ -41,7 +34,7 @@ export default component$(() => {
             <img src={e.image} alt="Shoes" />
           </figure>}
           <div class="card-body">
-            <h2 class="card-title">{e.name}</h2>
+            <h2 class="card-title">{e.name} <div class="badge badge-neutral">{e.type || "Creator"}</div></h2>
             <p>{e.description}</p>
             <div class="card-actions justify-end">
               <a href={e.github} class="btn">Github</a>
