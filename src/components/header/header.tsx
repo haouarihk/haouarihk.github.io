@@ -5,7 +5,7 @@ import Darkmode from "./darkmode";
 
 export const links: { [key: string]: string } = {
   Main: "/",
-  Projects: "/projects",
+  tools: "https://t.haouarihk.com",
   // Submissions: "/submissions",
 };
 
