@@ -4,7 +4,7 @@
   "author": "Haouari Haitam kouider",
   "private": true,
   "scripts": {
-    "build": "yarn build.types && yarn build.client && yarn build.ssg",
+    "build": "npm run build.types && npm run build.client && npm run build.ssg",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.types": "tsc --incremental --noEmit",

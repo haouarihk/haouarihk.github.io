@@ -58,4 +58,4 @@ COPY --from=build /usr/src/app/server ./server
 EXPOSE 3000
  
 # Run the application.
-CMD npm run serve
+CMD npm run start
