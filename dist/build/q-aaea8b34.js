@@ -1,0 +1,1 @@
+import{m as o,u as t,_ as a}from"./q-25dbfcb8.js";const _=o(t(()=>a(()=>import("./q-c8ed7609.js"),["build/q-c8ed7609.js","build/q-ce68c386.js","build/q-25dbfcb8.js","build/q-df130511.css"]),"s_5lBR0jwvHAE")),i={title:"haitam kouider"};export{_ as default,i as head};
