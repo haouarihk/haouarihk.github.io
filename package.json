@@ -18,6 +18,7 @@
     "serve": "wrangler pages dev ./dist",
     "ssg": "node server/entry.static",
     "start": "vite --open --mode ssr",
+    "start:host": "vite --open --mode ssr --host",
     "qwik": "qwik"
   },
   "devDependencies": {
