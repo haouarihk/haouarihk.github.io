@@ -13,7 +13,7 @@ export default component$(() => {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png"
         />
       </a>
-      <Link href="https://t.haouarihk.com" class="btn btn-primary w-24">
+      <Link href="https://tools.haouarihk.com" class="btn btn-primary w-24">
         Tools
       </Link>
     </>

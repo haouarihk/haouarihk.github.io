@@ -1,11 +1,10 @@
 import { component$, useStore } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
-import User from "../user";
 import Darkmode from "./darkmode";
 
 export const links: { [key: string]: string } = {
   Main: "/",
-  tools: "https://t.haouarihk.com",
+  tools: "https://tools.haouarihk.com",
   // Submissions: "/submissions",
 };
 
